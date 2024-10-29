@@ -87,9 +87,7 @@ class PostPage:
             min_lines=2,
             max_lines=4,
             expand=True,
-            bgcolor=noteInputBqColor,  # Background color for the note input field
-            color=noteInputFontColor,  # Font color for the note input field
-            border_color=noteInputBorderColor  # Border color for the note input field
+
 
         )
 
@@ -108,8 +106,10 @@ class PostPage:
             on_click=self.save_note_handler
         )
 
-        # Notes Management UI
-        search_field = ft.TextField(hint_text="Search notes...", on_change=self.update_notes_view),
+        search_field = ft.TextField(
+            hint_text="Search notes...",
+            on_change=self.update_notes_view
+        )  # Remove the comma here
 
         sort_dropdown = ft.Dropdown(
             options=[ft.dropdown.Option("Priority"), ft.dropdown.Option("Date")],
@@ -120,7 +120,10 @@ class PostPage:
 
         notes_section = ft.Container(
             content=ft.Column([
-                ft.Row(controls=[search_field, sort_dropdown], alignment=ft.MainAxisAlignment.SPACE_BETWEEN),
+                ft.Row(
+                    controls=[search_field, sort_dropdown],  # Use list format here
+                    alignment=ft.MainAxisAlignment.SPACE_BETWEEN
+                ),
                 self.notes_list
             ]),
             padding=ft.padding.all(10),
